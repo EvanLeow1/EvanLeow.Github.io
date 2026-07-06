@@ -175,3 +175,73 @@ function update(){
     });
 
 }
+
+function draw(){
+
+    ctx.clearRect(0,0,WIDTH,HEIGHT);
+
+    ctx.fillStyle="cyan";
+
+    ctx.fillRect(
+
+        player.x,
+
+        player.y,
+
+        player.width,
+
+        player.height
+
+    );
+
+    ctx.fillStyle="yellow";
+
+    bullets.forEach(b=>{
+
+        ctx.fillRect(
+
+            b.x,
+
+            b.y,
+
+            b.width,
+
+            b.height
+
+        );
+
+    });
+
+    aliens.forEach(a=>{
+
+        if(!a.alive) return;
+
+        ctx.fillStyle="lime";
+
+        ctx.fillRect(
+
+            a.x,
+
+            a.y,
+
+            a.width,
+
+            a.height
+
+        );
+
+    });
+
+}
+
+function gameLoop(){
+
+    update();
+
+    draw();
+
+    requestAnimationFrame(gameLoop);
+
+}
+
+gameLoop();
